@@ -1,3 +1,4 @@
+
 export interface TaxBracket {
   rate: number;
   min?: number;
@@ -62,4 +63,22 @@ export enum ViewState {
   CALCULATOR = 'CALCULATOR',
   ADVISOR = 'ADVISOR',
   COUNTRY_DETAIL = 'COUNTRY_DETAIL'
+}
+
+export interface TaxDetail {
+  label: string;
+  amount: number;
+  note?: string;
+}
+
+export interface TaxResult {
+  totalTax: number;
+  effectiveRate: number;
+  breakdown: TaxDetail[];
+}
+
+export interface CountryTaxCalculator {
+  calculateCorporate(revenue: number, expenses: number): TaxResult;
+  calculatePartnership(revenue: number, expenses: number): TaxResult;
+  calculateSoleProp(revenue: number, expenses: number): TaxResult;
 }
